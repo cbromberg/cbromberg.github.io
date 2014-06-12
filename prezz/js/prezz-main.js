@@ -1,7 +1,5 @@
 ALL.getHostJs(function (AP) {
 
-    AP.sizeToParent();
-
     var pageId = URI.getQueryParam('pageId');
 
     var parsePage = function (responseObj) {
@@ -28,6 +26,8 @@ ALL.getHostJs(function (AP) {
         $('#prezz-temp .columnLayout').each(function (idx) {
             addSlide($(this).html())
         });
+
+        AP.sizeToParent();
 
 
         // Full list of configuration options available here:
