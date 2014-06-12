@@ -2,7 +2,9 @@ ALL.getHostJs(function (AP) {
 
     AP.sizeToParent();
 
-    AP.request({url: '/rest/api/space', success: function (responseText) {
+    var pageId = URI.getQueryParam('pageId');
+
+    AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view', success: function (responseText) { alert('asdf');
         console.log(JSON.parse(responseText));
     }});
 
