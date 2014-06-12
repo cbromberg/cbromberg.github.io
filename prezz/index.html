@@ -367,6 +367,8 @@ function linkify( selector ) {
 
         ALL.getHostJs(function(AP) {
 
+          AP.request({url: '/rest/api/space', success : function(responseText) { console.log(JSON.parse(responseText)); }});
+
           // Full list of configuration options available here:
           // https://github.com/hakimel/reveal.js#configuration
           Reveal.initialize({
