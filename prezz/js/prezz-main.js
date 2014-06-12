@@ -26,7 +26,7 @@ ALL.getHostJs(function (AP) {
 
     var addSlides = function(sections) {
         sections.each(function() {
-            $('.slides').append('<section>' + $(this).html() + '</section>');
+            $('.slides').append('<section>' + $(this).find('.innerCell').html() + '</section>');
         });
     };
 
