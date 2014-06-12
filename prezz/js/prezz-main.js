@@ -5,12 +5,35 @@ ALL.getHostJs(function (AP) {
     var pageId = URI.getQueryParam('pageId');
 
     AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view', success: function (responseText) {
-        alert('asdf');
         var responseObj = JSON.parse(responseText);
-        var id = 'prezz-temp';
-        $('div', { id: id }).html(responseObj.body.view.value);
-        console.log($('#prezz-temp'));
+        console.log(responseObj.body.view.value);
+
+        var page = parsePage(responseObj)
+        addSlides(page.sections);
+
+        $('#prezz-temp .columnLayout').each(function(idx) {
+            addSlide($(this).html())
+        });
     }});
+
+    var parsePage = function(pageObj) {
+        var id = pageObj.id;
+        var title = pageObj.title;
+        $('<div id="prezz-temp" />').html(pageObj.body.view.value)
+        var sections = $('#prezz-temp .contentLayout2 .columnLayout');
+
+        return {
+            id: id,
+            title: title,
+            sections: sections
+        };
+    };
+
+    var addSlides = function(sections) {
+        sections.each(function() {
+            $('.slides').append('<section>' + $(this).html() + '</section>');
+        });
+    };
 
     // Full list of configuration options available here:
     // https://github.com/hakimel/reveal.js#configuration
