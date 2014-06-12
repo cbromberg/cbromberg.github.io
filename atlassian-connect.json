@@ -15,7 +15,7 @@
     "generalPages": [
       {
         "key": "show-prezz",
-        "url": "/show-prezz.html?spaceKey={space.key}",
+        "url": "/show-prezz.html?spaceKey={space.key}&pageId={page.id}",
         "location": "system.content.action",
         "name": {
           "value": "Show Prezz"
@@ -23,7 +23,7 @@
       },
       {
         "key": "prezz",
-        "url": "/index.html?spaceKey={space.key}",
+        "url": "/index.html?spaceKey={space.key}&pageId={page.id}",
         "location": "system.content.action",
         "name": {
           "value": "Show Prezz2"
