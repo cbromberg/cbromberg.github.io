@@ -365,7 +365,10 @@ function linkify( selector ) {
 
     <script>
 
+        $('body').height(window.outerHeight - 265);
         ALL.getHostJs(function(AP) {
+
+          AP.sizeToParent();
 
           AP.request({url: '/rest/api/space', success : function(responseText) { console.log(JSON.parse(responseText)); }});
 
