@@ -16,16 +16,11 @@ ALL.getHostJs(function (AP) {
         });
     }});
 
-    var parsePage = function(pageObj) {
-        var id = pageObj.id;
-        var title = pageObj.title;
-        $('<div id="prezz-temp" />').html(pageObj.body.view.value)
-        var sections = $('#prezz-temp .contentLayout2 .columnLayout');
-
+    var parsePage = function(responseObj) {
         return {
-            id: id,
-            title: title,
-            sections: sections
+            id: responseObj.id,
+            title: responseObj.title,
+            sections: $('<div id="prezz-temp" />').html(responseObj.body.view.value).find('.contentLayout2 .columnLayout')
         };
     };
 
@@ -34,6 +29,7 @@ ALL.getHostJs(function (AP) {
             $('.slides').append('<section>' + $(this).html() + '</section>');
         });
     };
+
 
     // Full list of configuration options available here:
     // https://github.com/hakimel/reveal.js#configuration
