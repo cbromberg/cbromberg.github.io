@@ -4,8 +4,12 @@ ALL.getHostJs(function (AP) {
 
     var pageId = URI.getQueryParam('pageId');
 
-    AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view', success: function (responseText) { alert('asdf');
-        console.log(JSON.parse(responseText));
+    AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view', success: function (responseText) {
+        alert('asdf');
+        var responseObj = JSON.parse(responseText);
+        var id = 'prezz-temp';
+        $('div', { id: id }).html(responseObj.body.view.value);
+        console.log($('#prezz-temp'));
     }});
 
     // Full list of configuration options available here:
