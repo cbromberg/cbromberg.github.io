@@ -20,6 +20,14 @@
         "name": {
           "value": "Show Prezz"
         }
+      },
+      {
+        "key": "prezz",
+        "url": "/index.html?spaceKey={space.key}",
+        "location": "system.content.action",
+        "name": {
+          "value": "Show Prezz2"
+        }
       }
     ]
   },
