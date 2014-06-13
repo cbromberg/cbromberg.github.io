@@ -3,10 +3,16 @@ ALL.getHostJs(function (AP) {
     var pageId = URI.getQueryParam('pageId');
 
     var parsePage = function (responseObj) {
+        var defaultPrezzOptions = { theme: 'default'};
+        defaultPrezzOptions.theme = $($(responseObj.body.storage.value).find('ac\\:structured-macro[ac\\:name="prezz-options-macro"]>ac\\:parameter[ac\\:name="theme"]')[0]).text() || 'default';
+        defaultPrezzOptions.theme = defaultPrezzOptions.theme.toLowerCase();
+        defaultPrezzOptions.transition = $($(responseObj.body.storage.value).find('ac\\:structured-macro[ac\\:name="prezz-options-macro"]>ac\\:parameter[ac\\:name="transition"]')[0]).text() || 'page';
+        defaultPrezzOptions.transition = defaultPrezzOptions.transition.toLowerCase();
         return {
             id: responseObj.id,
             title: responseObj.title,
-            sections: $('<div id="prezz-temp" />').html(responseObj.body.view.value).find('.contentLayout2 .columnLayout')
+            sections: $('<div id="prezz-temp" />').html(responseObj.body.view.value).find('.contentLayout2 .columnLayout'),
+            prezzOptions: defaultPrezzOptions
         };
     };
 
@@ -25,7 +31,7 @@ ALL.getHostJs(function (AP) {
         });
     };
 
-    AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view', success: function (responseText) {
+    AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view,body.storage', success: function (responseText) {
         var responseObj = JSON.parse(responseText);
         var page = parsePage(responseObj);
         addSlides(page.sections);
@@ -45,8 +51,8 @@ ALL.getHostJs(function (AP) {
             center: true,
             embedded: true,
 
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'page', // default/cube/page/concave/zoom/linear/fade/none
+            theme: page.prezzOptions.theme, // available themes are in /css/theme
+            transition: page.prezzOptions.transition || 'page', // default/cube/page/concave/zoom/linear/fade/none
 
             // Parallax scrolling
             // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',

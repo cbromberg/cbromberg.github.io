@@ -1,35 +1,103 @@
 {
-  "key": "prezz",
-  "name": "K15t Prezz",
-  "description": "Visualize Confluence pages as slides in a presentation in Confluence.",
+    "key": "prezz",
+    "name": "K15t Prezz",
+    "description": "Visualize Confluence pages as slides in a presentation in Confluence.",
   "baseUrl": "https://cbromberg.github.io/prezz",
-  "vendor": {
-    "name": "K15t Labs",
-    "url": "http://www.k15t.com"
-  },
-  "authentication": {
-    "type": "none"
-  },
-  "version": "0.1",
-  "modules": {
-    "generalPages": [
-      {
-        "key": "show-prezz",
-        "url": "/show-prezz.html?spaceKey={space.key}&pageId={page.id}",
-        "location": "system.content.action",
-        "name": {
-          "value": "Show Prezz"
+    "vendor": {
+        "name": "K15t Labs",
+        "url": "http://www.k15t.com"
+    },
+    "authentication": {
+        "type": "none"
+    },
+  "version": "0.0.5",
+    "modules": {
+        "generalPages": [
+            {
+                "key": "prezz",
+                "url": "/index.html?spaceKey={space.key}&pageId={page.id}",
+                "location": "system.content.action",
+                "name": {
+                    "value": "Show Prezz"
+                }
+            }
+        ],
+        "staticContentMacros": [
+            {
+                "url": "/prezz-options.html",
+                "description": {
+                    "value": "Configure options for a Prezz presentation using this macro"
+                },
+
+                "categories": [
+                    "visuals"
+                ],
+                "outputType": "block",
+                "bodyType": "none",
+                "aliases": [
+                    "Prezz Options"
+                ],
+                "featured": true,
+                "parameters": [
+                    {
+                        "identifier": "transition",
+                        "name": {
+                            "value": "Default slide transition"
+                        },
+                        "description": {
+                            "value": "Allows switching the default transition style for slides"
+                        },
+                        "type": "enum",
+                        "required": true,
+                        "multiple": false,
+                        "defaultValue": "Default",
+                        "values": [
+                            "Default",
+                            "None",
+                            "Fade",
+                            "Slide",
+                            "Concave",
+                            "Zoom"
+                        ]
+                    },
+                    {
+                        "identifier": "theme",
+                        "name": {
+                            "value": "Default slide theme"
+                        },
+                        "description": {
+                            "value": "Allows switching the default theme for slides"
+                        },
+                        "type": "enum",
+                        "required": true,
+                        "multiple": false,
+                        "defaultValue": "Default",
+                        "values": [
+                            "Default",
+                            "Sky",
+                            "Beige",
+                            "Simple",
+                            "Serif",
+                            "Night",
+                            "Moon",
+                            "Solarized",
+                            "K15t"
+                        ]
+                    }
+                ],
+                "key": "prezz-options-macro",
+                "name": {
+                    "value": "Prezz presentation options"
+                }
+            }
+        ],
+        "configurePage": {
+            "key": "about-prezz",
+            "url": "/about-prezz.html",
+            "name": {
+                "value": "About Prezz"
+            }
         }
-      },
-      {
-        "key": "prezz",
-        "url": "/index.html?spaceKey={space.key}&pageId={page.id}",
-        "location": "system.content.action",
-        "name": {
-          "value": "Show Prezz2"
-        }
-      }
-    ]
-  },
-  "scopes": ["read"]
+    },
+    "scopes": ["read"]
 }
