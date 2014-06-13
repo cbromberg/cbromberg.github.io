@@ -36,6 +36,7 @@
   var host = URI.getQueryParam("xdm_e");
 
   ALL.hostBaseUrl = host && contextPath ? host + contextPath : undefined;
+  ALL.hostUrl = host ? host : undefined;
 
   ALL.getHostJs = function (callback)
   {

@@ -10,9 +10,18 @@ ALL.getHostJs(function (AP) {
         };
     };
 
+
     var addSlides = function (sections) {
         sections.each(function () {
+            sanatizeContent($(this).find('.innerCell'));
             $('.slides').append('<section>' + $(this).find('.innerCell').html() + '</section>');
+        });
+    };
+
+
+    var sanatizeContent = function (rawSlideContent) {
+        $.each(SANATIZERS, function(idx, val) {
+            val(rawSlideContent);
         });
     };
 
@@ -20,7 +29,7 @@ ALL.getHostJs(function (AP) {
         var responseObj = JSON.parse(responseText);
         console.log(responseObj.body.view.value);
 
-        var page = parsePage(responseObj)
+        var page = parsePage(responseObj);
         addSlides(page.sections);
 
         $('#prezz-temp .columnLayout').each(function (idx) {
@@ -69,5 +78,16 @@ ALL.getHostJs(function (AP) {
             ]
         });
     }});
+
+    var SANATIZERS = [
+//        function table(rawSlideContent) {
+//
+//        },
+        function fixConfluenceImageSrc(rawSlideContent) {
+            rawSlideContent.find('img.confluence-embedded-image').each(function() {
+                $(this).attr('src', ALL.hostUrl + $(this).attr('src'))
+            })
+        }
+    ]
 
 });
