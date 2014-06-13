@@ -100,7 +100,7 @@ ALL.getHostJs(function (AP) {
             rawSlideContent.find('div.code.panel.pdl').each(function() {
                 var codePanelEl = $(this);
                 var codeExampleString = codePanelEl.find('script[type="syntaxhighlighter"]').text().replace('<![CDATA[', '').replace(']]>', '');
-                codePanelEl.replaceWith('<pre>' + codeExampleString + '</pre>');
+                codePanelEl.replaceWith('<pre><code data-trim>' + codeExampleString + '</code></pre>');
             });
         }
     ]
