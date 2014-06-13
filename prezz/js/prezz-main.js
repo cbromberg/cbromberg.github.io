@@ -75,7 +75,9 @@ ALL.getHostJs(function (AP) {
             ]
         });
 
-        $('body').focus();
+        setTimeout(function() {
+            $('body').focus();
+        }, 2000);
     }});
 
     var SANATIZERS = [
