@@ -4,7 +4,7 @@ ALL.getHostJs(function (AP) {
 
     var parsePage = function (responseObj) {
         var defaultPrezzOptions = { theme: 'default'};
-        defaultPrezzOptions.theme = $($(responseObj.body.storage.value).find('ac\\:structured-macro[ac\\:name="prezz-options-macro"]>ac\\:parameter[ac\\:name="theme"]')[0]).text() || 'default';
+        defaultPrezzOptions.theme = $($(responseObj.body.storage.value).find('ac\\:structured-macro[ac\\:name="prezz-options-macro"]>ac\\:parameter[ac\\:name="theme"]')[0]).text() || 'k15t';
         defaultPrezzOptions.theme = defaultPrezzOptions.theme.toLowerCase();
         defaultPrezzOptions.transition = $($(responseObj.body.storage.value).find('ac\\:structured-macro[ac\\:name="prezz-options-macro"]>ac\\:parameter[ac\\:name="transition"]')[0]).text() || 'page';
         defaultPrezzOptions.transition = defaultPrezzOptions.transition.toLowerCase();
