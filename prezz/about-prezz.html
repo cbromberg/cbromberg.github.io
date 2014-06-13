@@ -1,0 +1,22 @@
+<html>
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/include-all.js"></script>
+    <script language="JavaScript">
+        ALL.getHostJs(function(AP) {
+            window.spaceKey = URI.getQueryParam("spaceKey");
+            AP.request({
+                url: "/rest/api/space/ds.json?expand=rootpages",
+                success: function (response)
+                {
+                    alert(JSON.stringify(response));
+                }
+            })});
+    </script>
+</head>
+<body>
+<div class="ac-content">
+    <h1>Hello World! Outrageous</h1>
+</div>
+</body>
+</html>

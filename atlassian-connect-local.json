@@ -1,0 +1,35 @@
+{
+  "key": "prezz",
+  "name": "K15t Prezz",
+  "description": "Visualize Confluence pages as slides in a presentation in Confluence.",
+  "baseUrl": "http://localhost:8080/prezz",
+  "vendor": {
+    "name": "K15t Labs",
+    "url": "http://www.k15t.com"
+  },
+  "authentication": {
+    "type": "none"
+  },
+  "version": "0.1",
+  "modules": {
+    "generalPages": [
+      {
+        "key": "prezz",
+        "url": "/index.html?spaceKey={space.key}&pageId={page.id}",
+        "location": "system.content.action",
+        "name": {
+          "value": "Show Prezz2"
+        }
+      }
+    ],
+    "configurePage": 
+      {
+        "key": "about-prezz",
+        "url": "/about-prezz.html",
+        "name": {
+          "value": "About Prezz"
+        }
+      }
+  },
+  "scopes": ["read"]
+}
