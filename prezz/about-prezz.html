@@ -4,19 +4,15 @@
     <script src="js/include-all.js"></script>
     <script language="JavaScript">
         ALL.getHostJs(function(AP) {
-            window.spaceKey = URI.getQueryParam("spaceKey");
-            AP.request({
-                url: "/rest/api/space/ds.json?expand=rootpages",
-                success: function (response)
-                {
-                    alert(JSON.stringify(response));
-                }
-            })});
+            console.log("Loaded about-prezz.html")
+            });
     </script>
 </head>
 <body>
 <div class="ac-content">
-    <h1>Hello World! Outrageous</h1>
+    <p>Visualize Confluence pages as slides in a presentation in Confluence.</p>
+
+    <p>A K15t ShipIt project by Stefan &amp; Christoffer</p>
 </div>
 </body>
 </html>
