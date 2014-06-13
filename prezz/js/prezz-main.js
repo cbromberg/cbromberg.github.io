@@ -35,6 +35,10 @@ ALL.getHostJs(function (AP) {
         });
     };
 
+    var setBacklink = function(pageId) {
+        $('a.prezz-backlink').attr('href', ALL.hostBaseUrl + "/pages/viewpage.action?pageId=" + pageId);
+    };
+
     AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view,body.storage', success: function (responseText) {
         var responseObj = JSON.parse(responseText);
         var page = parsePage(responseObj);
@@ -43,6 +47,8 @@ ALL.getHostJs(function (AP) {
         $('#prezz-temp .columnLayout').each(function (idx) {
             addSlide($(this).html())
         });
+
+        setBacklink(page.pageId);
 
         AP.sizeToParent();
 
