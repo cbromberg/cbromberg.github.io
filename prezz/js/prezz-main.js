@@ -102,7 +102,6 @@ ALL.getHostJs(function (AP) {
             });
         },
         function listItems(rawSlideContent) {
-            debugger ;
             rawSlideContent.find('li').each(function() {
                 // move header
                 var liEl = $(this);
