@@ -17,9 +17,13 @@ ALL.getHostJs(function (AP) {
     };
 
 
-    var addSlides = function (sections) {
+    var addSlides = function (sections, prezzOptions) {
+        if (prezzOptions.theme != 'k15t') {
+            $($('.slides')).html('');
+        }
         sections.each(function () {
             sanatizeContent($(this).find('.innerCell'));
+
             $('.slides').append('<section>' + $(this).find('.innerCell').html() + '</section>');
         });
     };
@@ -34,7 +38,7 @@ ALL.getHostJs(function (AP) {
     AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view,body.storage', success: function (responseText) {
         var responseObj = JSON.parse(responseText);
         var page = parsePage(responseObj);
-        addSlides(page.sections);
+        addSlides(page.sections, page.prezzOptions);
 
         $('#prezz-temp .columnLayout').each(function (idx) {
             addSlide($(this).html())
