@@ -97,8 +97,10 @@ ALL.getHostJs(function (AP) {
             })
         },
         function codeExample(rawSlideContent) {
-            rawSlideContent.find('script[type="syntaxhighlighter"]').each(function() {
-                $(this).text().replace('<![CDATA[', '').replace(']]>', '');
+            rawSlideContent.find('div.code.panel.pdl').each(function() {
+                var codePanelEl = $(this);
+                var codeExampleString = codeExample.find('script[type="syntaxhighlighter"]').text().replace('<![CDATA[', '').replace(']]>', '');
+                codePanelEl.replaceWith('<pre>' + codeExampleString + '</pre>');
             });
         }
     ]
