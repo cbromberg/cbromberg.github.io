@@ -75,9 +75,6 @@ ALL.getHostJs(function (AP) {
             ]
         });
 
-        setTimeout(function() {
-            $('body').focus();
-        }, 2000);
     }});
 
     var SANATIZERS = [
@@ -98,6 +95,11 @@ ALL.getHostJs(function (AP) {
             rawSlideContent.find('img.confluence-embedded-image').each(function() {
                 $(this).attr('src', ALL.hostUrl + $(this).attr('src'))
             })
+        },
+        function codeExample(rawSlideContent) {
+            rawSlideContent.find('script[type="syntaxhighlighter"]').each(function() {
+                $(this).text().replace('<![CDATA[', '').replace(']]>', '');
+            });
         }
     ]
 
