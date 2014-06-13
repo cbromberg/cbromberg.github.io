@@ -80,9 +80,16 @@ ALL.getHostJs(function (AP) {
     }});
 
     var SANATIZERS = [
-//        function table(rawSlideContent) {
-//
-//        },
+        function table(rawSlideContent) {
+            rawSlideContent.find('table.confluenceTable').parent();
+            rawSlideContent.find('table.confluenceTable').each(function() {
+                var tableEl = $(this);
+                var trEl = tableEl.find('tbody tr th').parent();
+                tableEl.html('<thead/>');
+                var theadEl = tableEl.find('thead');
+                trEl.appendTo(theadEl);
+            });
+        },
         function fixConfluenceImageSrc(rawSlideContent) {
             rawSlideContent.find('img.confluence-embedded-image').each(function() {
                 $(this).attr('src', ALL.hostUrl + $(this).attr('src'))
