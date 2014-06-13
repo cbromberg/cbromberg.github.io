@@ -81,13 +81,16 @@ ALL.getHostJs(function (AP) {
 
     var SANATIZERS = [
         function table(rawSlideContent) {
-            rawSlideContent.find('table.confluenceTable').parent();
-            rawSlideContent.find('table.confluenceTable').each(function() {
-                var tableEl = $(this);
+            rawSlideContent.find('div.table-wrap').each(function() {
+                // move header
+                var tableWrapEl = $(this);
+                var tableEl = tableWrapEl.find('table.confluenceTable');
                 var trEl = tableEl.find('tbody tr th').parent();
                 tableEl.prepend('<thead/>');
                 var theadEl = tableEl.find('thead');
                 trEl.appendTo(theadEl);
+                // remove div wrapper
+                tableWrapEl.replaceWith(tableEl.detach());
             });
         },
         function fixConfluenceImageSrc(rawSlideContent) {
