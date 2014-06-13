@@ -85,7 +85,7 @@ ALL.getHostJs(function (AP) {
             rawSlideContent.find('table.confluenceTable').each(function() {
                 var tableEl = $(this);
                 var trEl = tableEl.find('tbody tr th').parent();
-                tableEl.html('<thead/>');
+                tableEl.prepend('<thead/>');
                 var theadEl = tableEl.find('thead');
                 trEl.appendTo(theadEl);
             });
