@@ -101,6 +101,14 @@ ALL.getHostJs(function (AP) {
                 tableWrapEl.replaceWith(tableEl.detach());
             });
         },
+        function listItems(rawSlideContent) {
+            debugger ;
+            rawSlideContent.find('li').each(function() {
+                // move header
+                var liEl = $(this);
+                liEl.addClass('fragment');
+            });
+        },
         function fixConfluenceImageSrc(rawSlideContent) {
             rawSlideContent.find('img.confluence-embedded-image').each(function() {
                 $(this).attr('src', ALL.hostUrl + $(this).attr('src'))
