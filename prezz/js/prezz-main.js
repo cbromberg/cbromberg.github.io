@@ -36,7 +36,7 @@ ALL.getHostJs(function (AP) {
     };
 
     var setBacklink = function(pageId) {
-        $('a.prezz-backlink a').attr('href', ALL.hostBaseUrl + "/pages/viewpage.action?pageId=" + pageId);
+        $('p.prezz-backlink a').attr('href', ALL.hostBaseUrl + "/pages/viewpage.action?pageId=" + pageId);
     };
 
     AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view,body.storage', success: function (responseText) {
