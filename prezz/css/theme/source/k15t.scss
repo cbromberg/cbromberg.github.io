@@ -1,0 +1,111 @@
+/**
+ * Sky theme for reveal.js.
+ *
+ * Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@font-face {
+  font-family: 'DINWeb';
+  src: url("../../lib/font/DINWeb.eot");
+  src: url("../../lib/font/DINWeb.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+@font-face {
+  font-family: 'DINWeb';
+  src: url("../../lib/font/DINWeb-Medium.eot");
+  src: url("../../lib/font/DINWeb-Medium.woff") format("woff");
+  font-weight: bold;
+  font-style: normal; }
+
+
+// Override theme settings (see ../template/settings.scss)
+$mainFont: 'DINWeb', sans-serif;
+$mainColor: #333;
+$headingFont: 'DINWeb', sans-serif;
+$headingColor: #333;
+$headingLetterSpacing: -0.01em;
+$headingTextShadow: none;
+$headingTextTransform: none;
+$backgroundColor: #f7fbfc;
+$linkColor: #3b759e;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: #134674;
+
+// Fix headings
+.reveal h1 {
+  font-weight: bold;
+  font-size: 3em;
+  text-shadow: none!important;
+}
+.reveal h2 {
+  font-weight: bold;
+  font-size: 1.55em;
+}
+.reveal h3 {
+  text-transform: uppercase!important;
+  font-size: 1.55em;
+}
+
+// alignment
+.reveal .slides {
+  text-align: left!important;
+}
+
+.reveal section {
+  padding: 1em 0.7em!important;
+}
+
+//
+.reveal p img,
+.reveal svg {
+  display: block!important;
+  margin-left: auto!important;
+  margin-right: auto!important;
+}
+.reveal svg {
+  height: 50%;
+  width: 50%;
+  visibility: midde!important;
+  margin-top: 25%;
+}
+
+.reveal.page .slides section.intro:not(.stack):before {
+  background: none!important;
+}
+
+.reveal.page .slides section:not(.stack):after {
+  box-shadow: none;
+}
+
+// lists
+.reveal ol {
+  margin-left: 1.3em;
+}
+.reveal ul {
+  margin-left: 0.8em;
+}
+
+// Fix links so they are not cut off
+.reveal a:not(.image) {
+	line-height: 1.3em;
+}
+
+// Background generator
+@mixin bodyBackground() {
+	@include radial-gradient( #BAC6CF, #FFFEFE );
+}
+
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
