@@ -27,8 +27,6 @@ ALL.getHostJs(function (AP) {
 
     AP.request({url: '/rest/api/content/' + pageId + '.json?expand=body.view', success: function (responseText) {
         var responseObj = JSON.parse(responseText);
-        console.log(responseObj.body.view.value);
-
         var page = parsePage(responseObj);
         addSlides(page.sections);
 
@@ -37,7 +35,6 @@ ALL.getHostJs(function (AP) {
         });
 
         AP.sizeToParent();
-
 
         // Full list of configuration options available here:
         // https://github.com/hakimel/reveal.js#configuration
@@ -77,6 +74,8 @@ ALL.getHostJs(function (AP) {
                 } }
             ]
         });
+
+        $('body').focus();
     }});
 
     var SANATIZERS = [
