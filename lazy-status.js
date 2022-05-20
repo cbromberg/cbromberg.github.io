@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         lazy_status
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @description  Inserts links and summaries in a way that is easy to use for daily status updates.
 // @author       Christoffer
 // @match        https://jira.k15t.com/*
@@ -54,11 +54,9 @@
             close: `auto`
         });
     }
-
+    // on a particular issue
     if (window.location.host === "jira.k15t.com" && (window.location.pathname.indexOf("/browse/") == 0
         || window.location.pathname.indexOf("/projects/") == 0)) {
-
-
         let issueSummary = $('#summary-val').text()
         let issueKey = $('.aui-page-header-main .issue-link:not(#parent_issue_summary)').text()
         let issueLink = $('.aui-page-header-main .issue-link:not(#parent_issue_summary)').attr('href')
@@ -67,12 +65,22 @@
         flag(issueKey)
         remove()
     }
-
+    // boards
     if (window.location.host === "jira.k15t.com" && window.location.pathname.indexOf("/secure/RapidBoard.jspa") == 0) {
         let issueSummary = $('#ghx-detail-head #summary-val').text()
         let issueKey = $('#issuekey-val').text()
         let issueLink = $('#issuekey-val a').attr('href')
         output('#issuekey-val a', `<a href="${issueLink}">${issueKey}</a><i >&nbsp;${issueSummary}</i>-`)
+        copy()
+        flag(issueKey)
+        remove()
+    }
+    // issue navigator
+    if (window.location.host === "jira.k15t.com" && window.location.pathname.indexOf("/issues") == 0 && $('#issuetable').length > 0) {
+        let issueSummary = $('#issuetable .issuerow.focused .summary .issue-link:not(.parentIssue)').text()
+        let issueKey = $('#issuetable .issuerow.focused .issuekey a.issue-link').attr('data-issue-key')
+        let issueLink = $('#issuetable .issuerow.focused .issuekey a.issue-link').attr('href')
+        output('#issuetable .issuerow.focused .issuekey a.issue-link', `<a href="${issueLink}">${issueKey}</a><i >&nbsp;${issueSummary}</i>-`)
         copy()
         flag(issueKey)
         remove()
